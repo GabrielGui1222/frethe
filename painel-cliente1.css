@@ -168,10 +168,10 @@ h1{
 }
 
 /* LISTA DE VEÍCULOS */
-.list{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+.list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px; /* Define o espaço entre os anúncios */
 }
 
 .vcard{
@@ -226,12 +226,11 @@ h1{
 .gallery::-webkit-scrollbar{ display: none; }
 .gallery.is-dragging{ cursor: grabbing; scroll-snap-type: none; }
 
-.gallery .slide{
-    flex: 0 0 100%;
+.gallery .slide {
     width: 100%;
-    height: auto;
-    scroll-snap-align: start;
-    pointer-events: none; /* evita que o navegador tente "arrastar" a imagem em vez do carrossel */
+    height: 220px; /* Você pode aumentar ou diminuir essa altura se quiser */
+    object-fit: cover; 
+    display: block;
 }
 
 .gallery-dots{
@@ -287,9 +286,10 @@ h1{
     pointer-events: none;
 }
 
-@media (hover: none){
-    /* em telas de toque a seta fica sempre visível, já que não existe hover */
-    .gallery-nav{ opacity: 1; }
+@media (max-width: 768px) {
+    .list {
+        grid-template-columns: 1fr;
+    }
 }
 
 .badge{
